@@ -20,6 +20,12 @@ function App() {
         >
           Day 1 - Fluid Menu Animation
         </Link>
+        <Link
+          className="App-link"
+          to="/day-2"
+        >
+          Day 2 - Dynamaic Status Indicator
+        </Link>
       </header>
     </div>
   )

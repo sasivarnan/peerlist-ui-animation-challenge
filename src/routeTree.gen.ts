@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as Day2IndexImport } from './routes/day-2/index'
 import { Route as Day1IndexImport } from './routes/day-1/index'
 
 // Create/Update Routes
@@ -19,6 +20,12 @@ import { Route as Day1IndexImport } from './routes/day-1/index'
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const Day2IndexRoute = Day2IndexImport.update({
+  id: '/day-2/',
+  path: '/day-2/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -46,6 +53,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Day1IndexImport
       parentRoute: typeof rootRoute
     }
+    '/day-2/': {
+      id: '/day-2/'
+      path: '/day-2'
+      fullPath: '/day-2'
+      preLoaderRoute: typeof Day2IndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -54,36 +68,41 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/day-1': typeof Day1IndexRoute
+  '/day-2': typeof Day2IndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/day-1': typeof Day1IndexRoute
+  '/day-2': typeof Day2IndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/day-1/': typeof Day1IndexRoute
+  '/day-2/': typeof Day2IndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/day-1'
+  fullPaths: '/' | '/day-1' | '/day-2'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/day-1'
-  id: '__root__' | '/' | '/day-1/'
+  to: '/' | '/day-1' | '/day-2'
+  id: '__root__' | '/' | '/day-1/' | '/day-2/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Day1IndexRoute: typeof Day1IndexRoute
+  Day2IndexRoute: typeof Day2IndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Day1IndexRoute: Day1IndexRoute,
+  Day2IndexRoute: Day2IndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,7 +116,8 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/day-1/"
+        "/day-1/",
+        "/day-2/"
       ]
     },
     "/": {
@@ -105,6 +125,9 @@ export const routeTree = rootRoute
     },
     "/day-1/": {
       "filePath": "day-1/index.tsx"
+    },
+    "/day-2/": {
+      "filePath": "day-2/index.tsx"
     }
   }
 }

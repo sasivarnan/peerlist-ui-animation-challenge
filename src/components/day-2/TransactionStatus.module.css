@@ -1,0 +1,16 @@
+.root {
+  border-radius: 18px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 16px;
+  height: 36px;
+  font-weight: bold;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
