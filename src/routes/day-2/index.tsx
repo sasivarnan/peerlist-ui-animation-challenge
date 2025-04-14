@@ -38,7 +38,7 @@ function RouteComponent() {
   const [activeStatus, setActiveStatus] = useState(VARIANTS[0]);
 
   return (
-    <div className={styles["page-container"]}>
+    <div className="page-container">
       <TransactionStatus
         icon={activeStatus.icon}
         text={activeStatus.text}

@@ -24,7 +24,13 @@ function App() {
           className="App-link"
           to="/day-2"
         >
-          Day 2 - Dynamaic Status Indicator
+          Day 2 - Dynamic Status Indicator
+        </Link>
+        <Link
+          className="App-link"
+          to="/day-3"
+        >
+          Day 3 - Animated Checkboxes
         </Link>
       </header>
     </div>
