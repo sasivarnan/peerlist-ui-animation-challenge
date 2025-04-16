@@ -34,6 +34,9 @@ function App() {
         <Link className="App-link" to="/day-4">
           Day 4 - Animated Toggles
         </Link>
+        <Link className="App-link" to="/day-5">
+          Day 5 - Shared Layout Tabs
+        </Link>
       </header>
     </div>
   );

@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as Day5IndexImport } from './routes/day-5/index'
 import { Route as Day4IndexImport } from './routes/day-4/index'
 import { Route as Day3IndexImport } from './routes/day-3/index'
 import { Route as Day2IndexImport } from './routes/day-2/index'
@@ -22,6 +23,12 @@ import { Route as Day1IndexImport } from './routes/day-1/index'
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const Day5IndexRoute = Day5IndexImport.update({
+  id: '/day-5/',
+  path: '/day-5/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -88,6 +95,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Day4IndexImport
       parentRoute: typeof rootRoute
     }
+    '/day-5/': {
+      id: '/day-5/'
+      path: '/day-5'
+      fullPath: '/day-5'
+      preLoaderRoute: typeof Day5IndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -99,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/day-2': typeof Day2IndexRoute
   '/day-3': typeof Day3IndexRoute
   '/day-4': typeof Day4IndexRoute
+  '/day-5': typeof Day5IndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -107,6 +122,7 @@ export interface FileRoutesByTo {
   '/day-2': typeof Day2IndexRoute
   '/day-3': typeof Day3IndexRoute
   '/day-4': typeof Day4IndexRoute
+  '/day-5': typeof Day5IndexRoute
 }
 
 export interface FileRoutesById {
@@ -116,14 +132,22 @@ export interface FileRoutesById {
   '/day-2/': typeof Day2IndexRoute
   '/day-3/': typeof Day3IndexRoute
   '/day-4/': typeof Day4IndexRoute
+  '/day-5/': typeof Day5IndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/day-1' | '/day-2' | '/day-3' | '/day-4'
+  fullPaths: '/' | '/day-1' | '/day-2' | '/day-3' | '/day-4' | '/day-5'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/day-1' | '/day-2' | '/day-3' | '/day-4'
-  id: '__root__' | '/' | '/day-1/' | '/day-2/' | '/day-3/' | '/day-4/'
+  to: '/' | '/day-1' | '/day-2' | '/day-3' | '/day-4' | '/day-5'
+  id:
+    | '__root__'
+    | '/'
+    | '/day-1/'
+    | '/day-2/'
+    | '/day-3/'
+    | '/day-4/'
+    | '/day-5/'
   fileRoutesById: FileRoutesById
 }
 
@@ -133,6 +157,7 @@ export interface RootRouteChildren {
   Day2IndexRoute: typeof Day2IndexRoute
   Day3IndexRoute: typeof Day3IndexRoute
   Day4IndexRoute: typeof Day4IndexRoute
+  Day5IndexRoute: typeof Day5IndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -141,6 +166,7 @@ const rootRouteChildren: RootRouteChildren = {
   Day2IndexRoute: Day2IndexRoute,
   Day3IndexRoute: Day3IndexRoute,
   Day4IndexRoute: Day4IndexRoute,
+  Day5IndexRoute: Day5IndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -157,7 +183,8 @@ export const routeTree = rootRoute
         "/day-1/",
         "/day-2/",
         "/day-3/",
-        "/day-4/"
+        "/day-4/",
+        "/day-5/"
       ]
     },
     "/": {
@@ -174,6 +201,9 @@ export const routeTree = rootRoute
     },
     "/day-4/": {
       "filePath": "day-4/index.tsx"
+    },
+    "/day-5/": {
+      "filePath": "day-5/index.tsx"
     }
   }
 }

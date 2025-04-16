@@ -1,0 +1,14 @@
+.page-container {
+  justify-content: unset;
+}
+
+.pill-container {
+  display: flex;
+  gap: 8px;
+  padding-top: 16px;
+}
+
+.collectibles-container {
+  width: 350px;
+  margin-top: 32px;
+}
